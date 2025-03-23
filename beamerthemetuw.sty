@@ -1,0 +1,315 @@
+%%
+% @file beamerthemeTUW.sty
+% @date 2016-08-30
+% @author Wolfgang Puffitsch, Denise Ratasich
+%
+% @brief Beamer LaTeX template matching the corporate design of TU Wien.
+%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeTUW}[2016/08/30 Beamer template that fits the TU Wien corporate design (adopted styles from powerpoint presentation template in CD manual)]
+
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+
+\def\beamer@tuwDefault{default}
+\def\beamer@tuwPlain{plain}
+\def\beamer@tuwSidebar{sidebar}
+\def\beamer@tuwHelvetica{helvetica}
+\def\beamer@tuwNoImage{none}
+\def\beamer@tuwLogo{TU_Logo}
+\def\beamer@tuwLogoWhite{TU_Logo_white}
+\def\beamer@tuwSecondLogo{none}
+\def\beamer@tuwSecondLogoWidth{.5\textwidth}
+
+%%% options
+% The user may choose other fonts (TU Wien CD says to use helvetica).
+\DeclareOptionBeamer{font}{\def\beamer@tuwFont{#1}}
+% Another outer theme may be chosen, however it may not fit the TU Wien colors.
+\DeclareOptionBeamer{outer}{\def\beamer@tuwOuter{#1}}
+% Width of the sidebar.
+\DeclareOptionBeamer{width}{\def\beamer@tuwWidth{#1}}
+% Background image of TU Wien building on title page.
+\newif\ifbeamer@tuwBackground
+\DeclareOptionBeamer{tuw_background}{\beamer@tuwBackgroundtrue}
+% Individual background image on title page.
+\DeclareOptionBeamer{tuw_image}{\def\beamer@tuwImage{#1}}
+% White logo (if tuw_image is dark the logo should be set to be white).
+\newif\ifbeamer@tuwWhiteLogo
+\DeclareOptionBeamer{tuw_whitelogo}{\beamer@tuwWhiteLogotrue}
+% Print frame title beside the logo to save space.
+\newif\ifbeamer@tuwFrametitleToTop
+\DeclareOptionBeamer{tuw_frametitletotop}{\beamer@tuwFrametitleToToptrue}
+% Second logo in case we need more than one
+\DeclareOptionBeamer{second_logo}{\def\beamer@tuwSecondLogo{#1}}
+\DeclareOptionBeamer{second_logo_width}{\def\beamer@tuwSecondLogoWidth{#1}}
+
+% defaults
+\ExecuteOptionsBeamer{outer=default}
+\ExecuteOptionsBeamer{width=1.6cm}
+\ExecuteOptionsBeamer{font=\familydefault}
+\beamer@tuwBackgroundfalse
+\ExecuteOptionsBeamer{tuw_image=none}
+\ExecuteOptionsBeamer{second_logo=none}
+\beamer@tuwWhiteLogofalse
+\beamer@tuwFrametitleToTopfalse
+
+\ProcessOptionsBeamer
+
+\ifx\beamer@tuwFont\beamer@tuwHelvetica
+\RequirePackage{helvet}
+\fi
+
+\mode<presentation>
+
+%%% colors
+% For some reason the logo is not in TU-blue (0,102,153). The powerpoint
+% presentation has TU-blue as background and the logo with a different color
+% (doesn't look nice). We align the TU-blue to the logo, like in the CD manual.
+\definecolor{tuwBlue}{RGB}{0,116,178}
+\definecolor{tuwGray}{RGB}{102,102,102}
+\definecolor{iceBlue}{RGB}{222,231,236}
+
+\def\tuwBlue{tuwBlue}
+\def\tuwGray{tuwGray}
+\def\iceBlue{iceBlue}
+\def\tuwLightBlue{tuwBlue!20!white}
+\def\tuwMediumBlue{tuwBlue!45!white}
+\def\tuwDarkBlue{tuwBlue!70!black}
+\def\alertred{red!50!black}
+
+% content page
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=\alertred}
+\setbeamercolor{structure}{fg=\tuwBlue}
+\setbeamercolor{frametitle}{fg=black}
+
+\setbeamercolor{palette primary}{fg=\tuwDarkBlue,bg=\tuwLightBlue}
+\setbeamercolor{palette secondary}{fg=\tuwBlue!50!black,bg=\tuwMediumBlue}
+\setbeamercolor{palette tertiary}{fg=white,bg=\tuwBlue}
+
+\setbeamercolor{section in toc}{parent=normal text}
+\setbeamercolor{subsection in toc}{parent=section in toc}
+
+\setbeamercolor{block title}{fg=white, bg=\tuwBlue}
+\setbeamercolor{block title example}{fg=white, bg=\tuwBlue}
+\setbeamercolor{block title alerted}{fg=white, bg=\alertred}
+\setbeamercolor{block body}{bg=\iceBlue}
+\setbeamercolor{block body example}{parent=block body}
+\setbeamercolor{block body alerted}{parent=block body, fg=\alertred}
+
+\setbeamercolor{title in head/foot}{fg=\tuwBlue}
+\setbeamercolor{page number in head/foot}{fg=\tuwBlue}
+\setbeamercolor{footline}{fg=\tuwBlue}
+
+% color difference of default and other outer styles
+\ifx\beamer@tuwOuter\beamer@tuwDefault
+% default style - this is the CD of TU Wien
+% title page
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{subtitle}{fg=white}
+\setbeamercolor{author}{fg=white}
+\setbeamercolor{institute}{fg=white}
+\setbeamercolor{date}{fg=white}
+% content page
+% keep defaults (black)
+\else
+% other outer styles (e.g., sidebar)
+% title page
+\setbeamercolor{title}{fg=\tuwGray}
+\setbeamercolor{subtitle}{fg=\tuwGray}
+\setbeamercolor{author}{fg=black}
+\setbeamercolor{institute}{fg=black}
+\setbeamercolor{date}{fg=black}
+% content page
+\setbeamercolor{frametitle}{fg=\tuwGray}
+\setbeamercolor{headline}{fg=\tuwGray}
+\setbeamercolor{footline}{fg=\tuwGray}
+\fi
+
+% sidebar
+\setbeamercolor{sidebar}{bg=\tuwBlue,fg=white}
+\setbeamercolor{palette sidebar primary}{fg=\tuwDarkBlue,bg=\tuwLightBlue}
+\setbeamercolor{palette sidebar secondary}{fg=\tuwDarkBlue,bg=\tuwLightBlue}
+\setbeamercolor{palette sidebar tertiary}{fg=white,bg=\tuwBlue}
+\setbeamercolor{title in sidebar}{fg=white,bg=\tuwBlue}
+\setbeamercolor{section in sidebar}{fg=\tuwDarkBlue}
+\setbeamercolor{section in sidebar shaded}{fg=white,bg=\tuwBlue}
+\setbeamercolor{subsection in sidebar}{fg=\tuwDarkBlue}
+\setbeamercolor{subsection in sidebar shaded}{fg=white,bg=\tuwBlue}
+
+%%% fonts
+
+% font weight
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{author}{series=\mdseries}
+\setbeamerfont{institute}{series=\mdseries}
+\setbeamerfont{date}{series=\mdseries}
+\setbeamerfont{frametitle}{series=\mdseries}
+\setbeamerfont{headline}{series=\mdseries}
+\setbeamerfont{footline}{series=\mdseries}
+
+% font size difference of default and other outer styles
+\ifx\beamer@tuwOuter\beamer@tuwDefault
+% default style - this is the CD of TU Wien
+\setbeamerfont{title}{size=\huge}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\normalsize}
+\setbeamerfont{date}{size=\normalsize}
+\setbeamerfont{frametitle}{size=\Large}
+\setbeamerfont{framesubtitle}{size=\large}
+\setbeamerfont{headline}{size=\scriptsize}
+\setbeamerfont{footline}{size=\scriptsize}
+\else
+% other outer styles (e.g., sidebar)
+% keep defaults
+\fi
+
+\setbeamerfont{section in toc}{parent=normal text}
+\setbeamerfont{subsection in toc}{parent=section in toc}
+
+% sidebar
+\setbeamerfont{title in sidebar}{series=\bfseries}
+\setbeamerfont{section in sidebar}{series=\bfseries,size=\tiny}
+\setbeamerfont{subsection in sidebar}{size=\tiny}
+
+%%% outer
+\setbeamersize{text margin left=1.2cm}
+\setbeamersize{text margin right=1.5cm}
+\beamertemplatenavigationsymbolsempty
+
+
+\ifx\beamer@tuwOuter\beamer@tuwDefault
+% default outher theme - this is the CD of TU Wien
+
+% background
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+    \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+    % title page
+    \ifbeamer@tuwBackground % tu building background selected
+    \node[anchor=south west] (background) at (-0.15cm,-0.15cm) {\includegraphics[width=1.01\paperwidth]{TU_Background}};
+    \else\ifx\beamer@tuwImage\beamer@tuwNoImage % no background image specified
+    \fill[white] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+    \else % individual background image
+    \node[anchor=north west] (background) at (-0.15cm,-0.15cm) {\includegraphics[width=1.01\paperwidth]{\beamer@tuwImage}};
+    \fi\fi
+    \fill[\tuwBlue, rounded corners=0.5cm] (-1cm,-1cm) rectangle (\paperwidth-0.5cm,\paperheight-3cm);
+    \ifbeamer@tuwWhiteLogo % white logo option specified
+    \node[anchor=north west] (logo) at (0.3cm,\paperheight-0.1cm) {\includegraphics[width=.5\textwidth]{\beamer@tuwLogoWhite}};
+    \else
+    \node[anchor=north west] (logo) at (0.2cm,\paperheight-0.2cm) {\includegraphics[height=2cm]{\beamer@tuwLogo}};
+    \fi
+    \ifx\beamer@tuwSecondLogo\beamer@tuwNoImage
+    \else
+    \node[anchor=north east] (logo2) at (\paperwidth-0.2cm,\paperheight-0.2cm) {\includegraphics[width=\beamer@tuwSecondLogoWidth]{\beamer@tuwSecondLogo}};
+    \fi
+    % content page
+    \ifnum\thepage>1\relax%
+    \fill[\iceBlue] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+    \fill[white, rounded corners=0.5cm] (-1cm,-1cm) rectangle(\paperwidth-0.4cm,\paperheight-0.8cm);
+    \node[anchor=west] (logo) at (0.3cm,\paperheight-0.4cm) {\includegraphics[height=0.5cm]{TU_Signet}};
+    \fi
+  \end{tikzpicture}
+}
+
+% title page
+\def\beamer@titlepageLeft{1.6cm}
+\setbeamertemplate{title page}{
+  \vskip 4cm%
+  \begin{beamercolorbox}[leftskip=\beamer@titlepageLeft]{title}%
+    \usebeamerfont{title}\inserttitle%
+  \end{beamercolorbox}%
+  \vskip 0.5cm%
+  \begin{beamercolorbox}[leftskip=\beamer@titlepageLeft]{subtitle}
+    \usebeamerfont{subtitle}\insertsubtitle%
+  \end{beamercolorbox}
+  \vskip 0.25cm%
+  \vfill%
+  \begin{beamercolorbox}[leftskip=\beamer@titlepageLeft]{author}
+    \usebeamerfont{author}\insertauthor%
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[leftskip=\beamer@titlepageLeft]{date}
+    \usebeamerfont{date}\insertdate%
+  \end{beamercolorbox}
+}
+
+% frametitle
+\setbeamertemplate{frametitle}
+{%
+  \ifbeamer@tuwFrametitleToTop % frametitle should be printed beside the logo
+  % vbox to keep the baseline
+  \vbox{}\vskip -0.43cm%
+  \else
+  \vbox{}\vskip 0.7cm%
+  \fi
+  \begin{beamercolorbox}[leftskip=0cm]{frametitle}
+    \usebeamerfont{frametitle}\insertframetitle%
+    \ifbeamer@tuwFrametitleToTop
+    \vbox{}\vskip 0.3cm%
+    \else
+    \vbox{}\vskip 0.2cm%
+    \fi
+    \usebeamerfont{framesubtitle}\insertframesubtitle%
+  \end{beamercolorbox}
+}
+
+% footline
+\setbeamertemplate{footline}{%
+  \vspace{0.1cm}
+  \ifnum\thepage>1
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex]{footline}
+      \hskip 1.2cm%
+      \usebeamerfont{footline}\insertshortdate%
+      \hfill%
+      \insertshorttitle, \insertshortauthor%
+      \hfill%
+      \insertframenumber\:/\:\inserttotalframenumber%
+      \hspace*{1.5cm}%
+    \end{beamercolorbox}
+  \else
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,center]{}%
+        % empty environment to raise height
+    \end{beamercolorbox}
+  \fi
+  \vspace{0.1cm}
+}
+
+\else\ifx\beamer@tuwOuter\beamer@tuwSidebar
+% sidebar outer theme
+\useoutertheme[width=\beamer@tuwWidth,height=0pt]{\beamer@tuwOuter}
+
+% footline
+\setbeamertemplate{footline}{
+  \ifnum\thepage>1
+  \vspace{-1cm}
+  \hfill{\scriptsize\insertframenumber\:/\:\inserttotalframenumber~~}
+  \vspace{0.1cm}
+  \fi
+}
+\else
+\useoutertheme{\beamer@tuwOuter}
+\fi\fi % if outer=default or outer=sidebar
+
+
+%%% inner
+\ifx\beamer@tuwOuter\beamer@tuwDefault
+\setbeamertemplate{itemize items}[circle]
+\else
+% defaults
+\fi % if outer=default
+
+\setlength{\parskip}{6pt}
+
+% blocks
+\setbeamertemplate{blocks}[rounded]
+\pgfdeclareverticalshading{bmb@transition}{\the\paperwidth}{color(0pt)=(\iceBlue); color(3.0pt)=(\iceBlue)}
+
+\setbeamercovered{invisible}
+
+% emphasize
+\renewcommand<>{\emph}[1]{{\only#2{\color{\tuwBlue}}#1}}
+
+\hypersetup{colorlinks=true,linkcolor=fg,citecolor=\tuwGray,urlcolor=\tuwGray}
+
+\mode<all>
