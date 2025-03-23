@@ -2,6 +2,8 @@
 
 % Use the provided theme
 \usepackage{beamerthemetuw}
+\usepackage{enumitem}
+
 
 % Set title, author, date
 \title{Rust meets Reality}
@@ -22,12 +24,135 @@
 %\end{frame}
 
 % Section 1
+\section{Rust Tooling} 
+
+
+
+\begin{frame}{Licensing} 
+Rust Programming Language and official projects dual-licensed:
+\begin{itemize}[label=$\bullet$] 
+\item
+Apache License, Version 2.
+\item
+MIT license
+\end{itemize}
+\end{frame} 
+
+\begin{frame}{Rust Tooling and Compilation} 
+How does it \emph{feel} to use Rust? 
+
+\begin{itemize} [label=$\bullet$] 
+\item Is it easy to get set up? 
+\item Is it easy to learn? 
+\item Is there good documentation? 
+\item Can I figure out when I make a mistake? 
+\item Can I find help? 
+\item Is the compiler stable?
+	\begin{itemize}
+	\item
+	Bugs: are there many and do they get fixed?  
+	\item 
+	Will it change out from under me?
+	\end{itemize} 
+\item Will 
+\end{itemize} 
+\end{frame} 
+
+\begin{frame}{Basic Tools} 
+\begin{block}{}
+\begin{tabular}{@{}l l@{}}
+\textbf{rustc}        & The compiler \\
+\textbf{Cargo}        & Downloads dependencies, compiles packages, 
+\\ & makes distributables, and uploads to crates.io \\
+\textbf{crates.io}    & Package registry \\
+\textbf{rustup}       & Installs toolchain and manages compiler versions \\
+\end{tabular}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Standard Tooling} 
+\vspace{-3em}
+\begin{block}
+{Basic functionality included by default}
+\begin{itemize} [label=$\bullet$] 
+\item compilation \& build files
+\item tests
+\item dependency \& versioning management
+\item documentation generation
+\end{itemize}
+\end{block}
+Compare to Python dependency hell: \\
+pip, pip-tools, wheel, pyenv, conda, asdf, venv, virtualenv, pipenv, poetry, pypi, flit, conda-forge, anaconda-repo \ldots
+\end{frame} 
+
+\begin{frame}{Getting Started: Running Rustup} 
+This installs Rustup, Cargo, the Rust compiler etc. Easy! 
+\begin{block}{Linux / Mac}
+\texttt{curl --proto `=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh}
+\end{block}
+\begin{block}{Windows}
+Download and run rustup-init.exe (Also requires installing Visual Studio for linker and Windows API)
+\end{block}
+\end{frame}
+
+\begin{frame}{Example Cargo Commands} 
+\begin{block}{}
+\begin{tabular}{@{}l l@{}}
+\texttt{cargo new}     & Create a new Rust project \\
+\texttt{cargo run}     & Build and run \\
+\texttt{cargo build}     & Build without running \\
+\texttt{cargo test}    & Run tests \\
+\texttt{cargo update}  & Update dependencies\\
+\texttt{cargo publish} & Publish package to crates.io \\
+\end{tabular}
+\end{block}
+
+Of course, can use flags 
+\begin{block}{}
+\texttt{cargo build --release} \hspace{3em} Build optimized version
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}{Compiler Development} 
+\begin{itemize} [label=$\bullet$] 
+\item
+Rust has a very strict stability policy and releases every six weeks. (Run
+\texttt{rustup update} to update)
+\item
+Many features only available on \emph{nightly} toolchain
+\item 
+Each major decision in Rust starts as Request for Comments (RFC).
+\end{itemize} 
+\end{frame} 
+
+\begin{frame}{Governance} 
+
+\url{https://github.com/rust-lang/rfcs/blob/master/text/1068-rust-governance.md}
+\begin{block}{}
+Rust is governed by a core team, [which]:
+\begin{itemize} [label=$\bullet$] 
+\item    Sets the overall direction and vision for the project;
+\item    Sets the priorities and release schedule;
+\item    Makes final decisions on RFCs.
+\end{itemize}
+\end{block}
+\end{frame} 
+
+
+
+
+\end{document}
+
+
 \section{Main Content}
 
 
 
 \begin{frame}{Rust in Production - Do You Run Rust Code?} 
-	\begin{block}{}
+\begin{block}{}
 
 \begin{itemize} 
 	\item \textbf{Firefox} 
@@ -112,35 +237,24 @@ Desired: 31\%\\
         \item[2016] Rust Mid-Level Intermediate Language (MIR) introduced
         \item[2022] Supported in Linux Kernel
         \item[2024] First Linux (network) drivers written in Rust accepted
-    \end{itemize}
+	\end{itemize}
 \end{frame}
 
+\begin{frame}{Development and Governance} 
+\end{frame} 
+
+\begin{frame}{Open-Source and Licensing} 
+\end{frame} 
 
 
-\begin{frame}{Key Concept 1}
-    Here is some content.
-    \begin{itemize}
-        \item Bullet point 1
-        \item Bullet point 2
-        \item Bullet point 3
-    \end{itemize}
-\end{frame}
+\begin{frame}{title} 
+\end{frame} 
 
-\begin{frame}{Key Concept 2}
-    Here is another slide.
-    \begin{block}{Important Block}
-        This is an emphasized block of text.
-    \end{block}
-\end{frame}
+\begin{frame}{C and Rust Interop} 
+\end{frame} 
 
-% Conclusion
-\section{Conclusion}
 
-\begin{frame}{Conclusion}
-    \begin{itemize}
-        \item Summary of key points
-        \item Final remarks
-    \end{itemize}
-\end{frame}
+\begin{frame}{title} 
+\end{frame} 
 
 \end{document}
