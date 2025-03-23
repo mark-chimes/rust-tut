@@ -28,15 +28,41 @@
 
 
 
-\begin{frame}{Licensing} 
-Rust Programming Language and official projects dual-licensed:
+\begin{frame}{Community} 
+
+
+
+
+\begin{block}{Rust enthusiasts are ``Rustaceans"}
 \begin{itemize}[label=$\bullet$] 
-\item
-Apache License, Version 2.
-\item
-MIT license
+\item Official Rust forums
+\item Discord
+\item Zulip
+\item Reddit
 \end{itemize}
-\end{frame} 
+\end{block}
+
+
+\begin{center}
+\includegraphics[scale=0.1]{cuddlyferris}
+
+Ferris, the Unofficial Rust Mascot
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}{Community} 
+\begin{block}{}
+\begin{quote}
+``This is by far the least toxic, most engaging and the nicest dev community I've EVER seen."
+\end{quote}
+\end{block}
+- Reddit user \emph{u/hussainsonreddit} on the Rust subreddit\footnote{\url{https://www.reddit.com/r/rust/comments/ofoi4l/best_developer_community_ive_seen/}}
+\end{frame}
+\end{document} 
+
 
 \begin{frame}{Rust Tooling and Compilation} 
 How does it \emph{feel} to use Rust? 
@@ -173,6 +199,32 @@ Rust is governed by a core team, [which]:
 \end{block}
 \end{frame} 
 
+
+\begin{frame}{Licensing} 
+Open source, very permissive licenses.
+
+
+\begin{block}{Rust Programming Language and official projects}
+\begin{itemize}[label=$\bullet$] 
+\item
+Apache License, Version 2.
+\item
+MIT license
+\end{itemize}
+\end{block}
+
+
+\end{frame}
+
+\begin{frame}{Image Licensing} 
+
+Rust and Cargo logos are owned by Mozilla and distributed under the terms of the Creative Commons Attribution license  \url{https://creativecommons.org/licenses/by/4.0/}
+\begin{center}
+\includegraphics[scale=0.4]{rust-logo-256x256}
+\includegraphics[scale=0.4]{Cargo-Logo-Small}
+\end{center}
+\end{frame} 
+
 \begin{frame}{} 
 \begin{center}
 \includegraphics[scale=0.45]{rust-in-firefox}
@@ -240,17 +292,26 @@ Desired: 31\%\\
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Development and Governance} 
+\begin{frame} {Fun Fact}
+\begin{block}{}
+Rust is named after the group of fungal plant pathogens, which Hoare calls “over-engineered for survival.”
+\end{block}
+\begin{center} 
+\includegraphics[scale=0.3]{Wheat_leaf_rust_on_wheat}
+\end{center}
 \end{frame} 
 
-\begin{frame}{Open-Source and Licensing} 
-\end{frame} 
 
-
-\begin{frame}{title} 
-\end{frame} 
 
 \begin{frame}{C and Rust Interop} 
+Can you call C code from Rust? Yes! 
+
+\includegraphics[scale=0.4]{calling-external}
+
+\url{https://doc.rust-lang.org/book/ch20-01-unsafe-rust.html} 
+
+(Requires creating foreign-function-interface (FFI), 
+wrapping the exposed C API for use with Rust, converting types, and pre-compiling the C code)
 \end{frame} 
 
 
