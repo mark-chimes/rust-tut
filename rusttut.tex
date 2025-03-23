@@ -1,183 +1,28 @@
 \documentclass{beamer}
 
-% Use the provided theme
 \usepackage{beamerthemetuw}
 \usepackage{enumitem}
 
 
-% Set title, author, date
-\title{Rust meets Reality}
-\subtitle{Usage, Community and Tooling}
+\title{Rust Ecosystem}
+\subtitle{Adoption, Tooling, Community and Governance}
 \author{Mark Chimes}
 \date{\today}
 
 \begin{document}
 
-% Title slide
 \begin{frame}
     \titlepage
 \end{frame}
 
-% Outline slide (optional)
-%\begin{frame}{Outline}
-%    \tableofcontents
-%\end{frame}
-
-% Section 1
-\section{Rust Tooling} 
-
-
-
-\begin{frame}{Community} 
-
-
-
-
-\begin{block}{Rust enthusiasts are ``Rustaceans"}
-\begin{itemize}[label=$\bullet$] 
-\item Official Rust forums
-\item Discord
-\item Zulip
-\item Reddit
-\end{itemize}
-\end{block}
-
-
-\begin{center}
-\includegraphics[scale=0.1]{cuddlyferris}
-
-Ferris, the Unofficial Rust Mascot
-\end{center}
-
+\begin{frame}{Outline}
+\tableofcontents
 \end{frame}
 
+\section{Adoption, Popularity, and Community}
+%\sectionpage
 
-
-\begin{frame}{Community} 
-\begin{block}{}
-\begin{quote}
-``This is by far the least toxic, most engaging and the nicest dev community I've EVER seen."
-\end{quote}
-\end{block}
-- Reddit user \emph{u/hussainsonreddit} on the Rust subreddit\footnote{\url{https://www.reddit.com/r/rust/comments/ofoi4l/best_developer_community_ive_seen/}}
-\end{frame}
-\end{document} 
-
-
-\begin{frame}{Rust Tooling and Compilation} 
-How does it \emph{feel} to use Rust? 
-
-\begin{itemize} [label=$\bullet$] 
-\item Is it easy to get set up? 
-\item Is it easy to learn? 
-\item Is there good documentation? 
-\item Can I figure out when I make a mistake? 
-\item Can I find help? 
-\item Is the compiler stable?
-	\begin{itemize}
-	\item
-	Bugs: are there many and do they get fixed?  
-	\item 
-	Will it change out from under me?
-	\end{itemize} 
-\item Will 
-\end{itemize} 
-\end{frame} 
-
-\begin{frame}{Basic Tools} 
-\begin{block}{}
-\begin{tabular}{@{}l l@{}}
-\textbf{rustc}        & The compiler \\
-\textbf{Cargo}        & Downloads dependencies, compiles packages, 
-\\ & makes distributables, and uploads to crates.io \\
-\textbf{crates.io}    & Package registry \\
-\textbf{rustup}       & Installs toolchain and manages compiler versions \\
-\end{tabular}
-\end{block}
-\end{frame}
-
-
-\begin{frame}{Standard Tooling} 
-\vspace{-3em}
-\begin{block}
-{Basic functionality included by default}
-\begin{itemize} [label=$\bullet$] 
-\item compilation \& build files
-\item tests
-\item dependency \& versioning management
-\item documentation generation
-\end{itemize}
-\end{block}
-Compare to Python dependency hell: \\
-pip, pip-tools, wheel, pyenv, conda, asdf, venv, virtualenv, pipenv, poetry, pypi, flit, conda-forge, anaconda-repo \ldots
-\end{frame} 
-
-\begin{frame}{Getting Started: Running Rustup} 
-This installs Rustup, Cargo, the Rust compiler etc. Easy! 
-\begin{block}{Linux / Mac}
-\texttt{curl --proto `=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh}
-\end{block}
-\begin{block}{Windows}
-Download and run rustup-init.exe (Also requires installing Visual Studio for linker and Windows API)
-\end{block}
-\end{frame}
-
-\begin{frame}{Example Cargo Commands} 
-\begin{block}{}
-\begin{tabular}{@{}l l@{}}
-\texttt{cargo new}     & Create a new Rust project \\
-\texttt{cargo run}     & Build and run \\
-\texttt{cargo build}     & Build without running \\
-\texttt{cargo test}    & Run tests \\
-\texttt{cargo update}  & Update dependencies\\
-\texttt{cargo publish} & Publish package to crates.io \\
-\end{tabular}
-\end{block}
-
-Of course, can use flags 
-\begin{block}{}
-\texttt{cargo build --release} \hspace{3em} Build optimized version
-\end{block}
-\end{frame}
-
-
-
-\begin{frame}{Compiler Development} 
-\begin{itemize} [label=$\bullet$] 
-\item
-Rust has a very strict stability policy and releases every six weeks. (Run
-\texttt{rustup update} to update)
-\item
-Many features only available on \emph{nightly} toolchain
-\item 
-Each major decision in Rust starts as Request for Comments (RFC).
-\end{itemize} 
-\end{frame} 
-
-\begin{frame}{Governance} 
-
-\url{https://github.com/rust-lang/rfcs/blob/master/text/1068-rust-governance.md}
-\begin{block}{}
-Rust is governed by a core team, [which]:
-\begin{itemize} [label=$\bullet$] 
-\item    Sets the overall direction and vision for the project;
-\item    Sets the priorities and release schedule;
-\item    Makes final decisions on RFCs.
-\end{itemize}
-\end{block}
-\end{frame} 
-
-
-
-
-\end{document}
-
-
-\section{Main Content}
-
-
-
-\begin{frame}{Rust in Production - Do You Run Rust Code?} 
+\begin{frame}{Rust in Production - Do You Use Rust Code?} 
 \begin{block}{}
 
 \begin{itemize} 
@@ -191,38 +36,14 @@ Rust is governed by a core team, [which]:
 	components of core file-storage system
 	\item \textbf{Cloudflare}
 	HTTP proxy (Pingora), DNS stack, DDoS 
+	\item \textbf{AWS}
+	Firecracker virtualization tech
 	\item \textbf{Git} Added first Rust code a few days ago: 
 	libgit-sys and libgit wrappers, and Rust Foreign-Language Interface
 	\item \textbf{Ubuntu} plans to replace GNU utilities with Rust implementations
 	(e.g. \texttt{ls, cp, find, diff})
 \end{itemize} 
 \end{block}
-\end{frame} 
-
-
-\begin{frame}{Licensing} 
-Open source, very permissive licenses.
-
-
-\begin{block}{Rust Programming Language and official projects}
-\begin{itemize}[label=$\bullet$] 
-\item
-Apache License, Version 2.
-\item
-MIT license
-\end{itemize}
-\end{block}
-
-
-\end{frame}
-
-\begin{frame}{Image Licensing} 
-
-Rust and Cargo logos are owned by Mozilla and distributed under the terms of the Creative Commons Attribution license  \url{https://creativecommons.org/licenses/by/4.0/}
-\begin{center}
-\includegraphics[scale=0.4]{rust-logo-256x256}
-\includegraphics[scale=0.4]{Cargo-Logo-Small}
-\end{center}
 \end{frame} 
 
 \begin{frame}{} 
@@ -279,6 +100,208 @@ Desired: 31\%\\
 \includegraphics[scale=0.35]{desired-admired-2024}
 \end{frame} 
 
+
+\begin{frame}{Community} 
+\begin{block}{}
+\begin{quote}
+``This is by far the least toxic, most engaging and the nicest dev community I've EVER seen."
+\end{quote}
+\end{block}
+- Reddit user \emph{u/hussainsonreddit} on the Rust subreddit\footnote{\url{https://www.reddit.com/r/rust/comments/ofoi4l/best_developer_community_ive_seen/}}
+\end{frame}
+
+
+
+\begin{frame}{Community} 
+\begin{block}{Rust enthusiasts are ``Rustaceans"}
+\begin{itemize}[label=$\bullet$] 
+\item Official Rust forums
+\item Discord
+\item Zulip
+\item Reddit
+\end{itemize}
+\end{block}
+\begin{center}
+\includegraphics[scale=0.1]{cuddlyferris}
+
+Ferris, the Unofficial Rust Mascot
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Others Interested in Rust}
+\begin{block}{Politically} 
+February 2024, United States White House issued a report urging that all programmers move to memory-safe programming; mentions Rust by name.
+\end{block} 
+\begin{block}{Commercially} 
+November 2024, Amazon issued challenge to formally verify safety of Rust standard library
+\end{block}
+\begin{block}{Academia} 
+Interesting academically: RustBelt project, modelling memory with separation logic, 
+Stacked Borrows and Tree Borrows aliasing models...
+\end{block} 
+\end{frame} 
+
+\section{Tooling and Compilation} 
+%\sectionpage
+%\begin{frame}{Rust Tooling and Compilation} 
+%\begin{center}
+%How does it \emph{feel} to use Rust in practice, compared to other programming languages? 
+%\end{center}
+%\end{frame} \section{Adoption and Popularity}
+
+
+\begin{frame}{Standard Tooling} 
+\vspace{-3em}
+\begin{block}
+{Basic functionality included by default}
+\begin{itemize} [label=$\bullet$] 
+\item compilation \& build files
+\item tests
+\item dependency \& versioning management
+\item documentation generation
+\end{itemize}
+\end{block}
+Compare to Python dependency hell: \\
+pip, pip-tools, wheel, pyenv, conda, asdf, venv, virtualenv, pipenv, poetry, pypi, flit, conda-forge, anaconda-repo \ldots
+\end{frame} 
+
+
+\begin{frame}{Basic Tools} 
+\begin{block}{}
+\begin{tabular}{@{}l l@{}}
+\textbf{rustc}        & The compiler \\
+\textbf{Cargo}        & Downloads dependencies, compiles packages, 
+\\ & uploads packages, and makes distributables\\
+\textbf{crates.io}    & Package registry \\
+\textbf{rustup}       & Installs toolchain and manages compiler versions \\
+\end{tabular}
+\end{block}
+\end{frame}
+
+
+
+
+\begin{frame}{Getting Started: Running Rustup} 
+This installs Rustup, Cargo, the Rust compiler etc. Easy! 
+\begin{block}{Linux / Mac}
+\texttt{curl --proto `=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh}
+\end{block}
+\begin{block}{Windows}
+Download and run rustup-init.exe (Also requires installing Visual Studio for linker and Windows API)
+\end{block}
+\end{frame}
+
+\begin{frame}{Example Cargo Commands} 
+\begin{block}{}
+\begin{tabular}{@{}l l@{}}
+\texttt{cargo new}     & Create a new Rust project \\
+\texttt{cargo run}     & Build and run \\
+\texttt{cargo build}     & Build without running \\
+\texttt{cargo test}    & Run tests \\
+\texttt{cargo update}  & Update dependencies\\
+\end{tabular}
+\end{block}
+
+Of course, can use flags 
+\begin{block}{}
+\texttt{cargo build --release} \hspace{3em} Build optimized version
+\end{block}
+\end{frame}
+
+\begin{frame}{Other Tooling} 
+\begin{block}{Other Tooling}
+\begin{tabular}{@{}l l@{}}
+\textbf{rust-analyzer}     &  language server (e.g. VS Code plugin) \\
+\textbf{clippy}     &  Linter (correctness, suspicious, style, \\
+					&			complexity, performance) \\
+\textbf{Rustfmt}    & auto-format code \\
+\textbf{MIRI}    	& Analyze unsafe code \\
+\textbf{rustdoc}  & Autogenerate documentation (HTML, CSS, \\
+					&			and JavaScript)\\
+\textbf{cargo publish} & upload package to crates.io \\
+\end{tabular}
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}{Compilation Times} 
+Common criticism of Rust is compilation times. 
+
+Much of this criticism is older; lots of improvement made
+
+Usual causes: Monomorphization, Re-compilation, Detailed compiler error messages
+
+What can you do to speed things up?\\ compilation flags: incremental, opt-level
+
+Still improving
+
+\end{frame}
+
+
+\begin{frame}{Compiler Development} 
+\begin{itemize} [label=$\bullet$] 
+\item
+Rust has a very strict stability policy and releases every six weeks. (Run
+\texttt{rustup update} to update)
+\item
+Many features only available on \emph{nightly} toolchain
+\item 
+Each major decision in Rust starts as Request for Comments (RFC).
+\end{itemize} 
+\end{frame} 
+
+
+\section{Governance, Licensing, and History} 
+%\sectionpage
+
+
+
+
+\begin{frame}{Governance} 
+
+\url{https://github.com/rust-lang/rfcs/blob/master/text/1068-rust-governance.md}
+\begin{block}{}
+Rust is governed by a core team, [which]:
+\begin{itemize} [label=$\bullet$] 
+\item    Sets the overall direction and vision for the project;
+\item    Sets the priorities and release schedule;
+\item    Makes final decisions on RFCs.
+\end{itemize}
+\end{block}
+\end{frame} 
+
+
+
+\begin{frame}{Licensing} 
+Open source, very permissive licenses.
+
+
+\begin{block}{Rust Programming Language and official projects}
+\begin{itemize}[label=$\bullet$] 
+\item
+Apache License, Version 2.
+\item
+MIT license
+\end{itemize}
+\end{block}
+
+
+\end{frame}
+
+\begin{frame}{Image Licensing} 
+
+Rust and Cargo logos are owned by Mozilla and distributed under the terms of the Creative Commons Attribution license  \url{https://creativecommons.org/licenses/by/4.0/}
+\begin{center}
+\includegraphics[scale=0.4]{rust-logo-256x256}
+\includegraphics[scale=0.4]{Cargo-Logo-Small}
+\end{center}
+\end{frame} 
+
+
+
+
 \begin{frame}{History}
     \begin{itemize}
         \item[2006] Personal project by \textbf{Graydon Hoare} working at Mozilla
@@ -302,6 +325,11 @@ Rust is named after the group of fungal plant pathogens, which Hoare calls “ov
 \end{frame} 
 
 
+\section{Extra Notes} 
+\sectionpage
+
+
+
 
 \begin{frame}{C and Rust Interop} 
 Can you call C code from Rust? Yes! 
@@ -314,8 +342,33 @@ Can you call C code from Rust? Yes!
 wrapping the exposed C API for use with Rust, converting types, and pre-compiling the C code)
 \end{frame} 
 
-
-\begin{frame}{title} 
-\end{frame} 
+\begin{frame}{Rust Verification}
+    \begin{itemize}
+        \item \textbf{Verified-Rust Tools:}
+        \begin{itemize}
+            \item \href{https://github.com/verus-lang/verus}{Verus}: Verified Rust for low-level systems code
+            \item \href{https://github.com/flux-rs/flux}{Flux}: Refinement Types for Rust
+            \item \href{https://github.com/viperproject/prusti-dev}{Prusti}: Static verifier for Rust (Viper-based)
+            \item \href{https://github.com/dafny-lang/dafny/issues/5561}{Dafny-Rust Compiler}: Experimental, partial support
+        \end{itemize}
+        \item \textbf{Creusot:} Automated proof of code correctness
+        \begin{itemize}
+            \item CreuSAT: Verified SAT solver written in Rust and verified with Creusot
+        \end{itemize}
+    \end{itemize}
+ \end{frame}
+        
+   \begin{frame}{Rust Verification}
+    \begin{itemize}     
+        \item \textbf{Aeneas:} Translates MIR to functional Coq/F*
+        \item \textbf{Kani:} Model checking
+        \item \textbf{Property-Based Testing:}
+        \begin{itemize}
+            \item \href{https://github.com/BurntSushi/quickcheck}{QuickCheck}: Automated property testing
+            \item \href{https://github.com/proptest-rs/proptest}{Proptest}: Hypothesis-like property testing
+        \end{itemize}
+        \item \textbf{Gilian Rust:} Hybrid approach to semi-automated Rust verification
+    \end{itemize}
+\end{frame}
 
 \end{document}
