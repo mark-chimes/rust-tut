@@ -2,6 +2,7 @@
 
 \usepackage{beamerthemetuw}
 \usepackage{enumitem}
+\setbeamercovered{transparent}
 
 
 \title{Rust Ecosystem}
@@ -22,29 +23,53 @@
 \section{Adoption, Popularity, and Community}
 %\sectionpage
 
+%\begin{frame}{Rust in Production - Do You Use Rust Code?} 
+%\begin{block}{}
+%\begin{itemize} 
+%	\item \textbf{Firefox} 
+%	12\% of code. Migrated server push-notification architecture.
+%	\item \textbf{Rust-For-Linux Project} 
+%	Comprises 0.125\% (1/800th) of Linux kernel
+%	\item \textbf{Ripgrep} 
+%	Powers text search in VS Code
+%	\item \textbf{Dropbox}
+%	components of core file-storage system
+%	\item \textbf{Cloudflare}
+%	HTTP proxy (Pingora), DNS stack, DDoS 
+%	\item \textbf{AWS}
+%	Firecracker virtualization tech
+%	\item \textbf{Git} Added first Rust code a few days ago: 
+%	libgit-sys and libgit wrappers, and Rust Foreign-Language Interface
+%	\item \textbf{Ubuntu} plans to replace GNU utilities with Rust implementations
+%	(e.g. \texttt{ls, cp, find, diff})
+%\end{itemize} 
+%\end{block}
+%\end{frame} 
+
 \begin{frame}{Rust in Production - Do You Use Rust Code?} 
 \begin{block}{}
 
 \begin{itemize} 
-	\item \textbf{Firefox} 
+	\item<2-> \textbf{Firefox} 
 	12\% of code. Migrated server push-notification architecture.
-	\item \textbf{Rust-For-Linux Project} 
+	\item<3-> \textbf{Rust-For-Linux Project} 
 	Comprises 0.125\% (1/800th) of Linux kernel
-	\item \textbf{Ripgrep} 
+	\item<4-> \textbf{Ripgrep} 
 	Powers text search in VS Code
-	\item \textbf{Dropbox}
+	\item<5-> \textbf{Dropbox}
 	components of core file-storage system
-	\item \textbf{Cloudflare}
+	\item<6-> \textbf{Cloudflare}
 	HTTP proxy (Pingora), DNS stack, DDoS 
-	\item \textbf{AWS}
+	\item<7-> \textbf{AWS}
 	Firecracker virtualization tech
-	\item \textbf{Git} Added first Rust code a few days ago: 
+	\item<8-> \textbf{Git} Added first Rust code a few days ago: 
 	libgit-sys and libgit wrappers, and Rust Foreign-Language Interface
-	\item \textbf{Ubuntu} plans to replace GNU utilities with Rust implementations
+	\item<9-> \textbf{Ubuntu} plans to replace GNU utilities with Rust implementations
 	(e.g. \texttt{ls, cp, find, diff})
 \end{itemize} 
 \end{block}
-\end{frame} 
+\end{frame}  
+
 
 \begin{frame}{} 
 \begin{center}
@@ -130,12 +155,15 @@ Ferris, the Unofficial Rust Mascot
 
 
 \begin{frame}{Others Interested in Rust}
+\pause
 \begin{block}{Politically} 
 February 2024, United States White House issued a report urging that all programmers move to memory-safe programming; mentions Rust by name.
 \end{block} 
+\pause
 \begin{block}{Commercially} 
 November 2024, Amazon issued challenge to formally verify safety of Rust standard library
 \end{block}
+\pause
 \begin{block}{Academia} 
 Interesting academically: RustBelt project, modelling memory with separation logic, 
 Stacked Borrows and Tree Borrows aliasing models...
@@ -156,37 +184,55 @@ Stacked Borrows and Tree Borrows aliasing models...
 \begin{block}
 {Basic functionality included by default}
 \begin{itemize} [label=$\bullet$] 
-\item compilation \& build files
-\item tests
-\item dependency \& versioning management
-\item documentation generation
+\item<2-> compilation \& build files
+\item<3-> tests
+\item<4-> dependency \& versioning management
+\item<5-> documentation generation
 \end{itemize}
 \end{block}
+
+\pause \pause \pause \pause \pause 
 Compare to Python dependency hell: \\
 pip, pip-tools, wheel, pyenv, conda, asdf, venv, virtualenv, pipenv, poetry, pypi, flit, conda-forge, anaconda-repo \ldots
 \end{frame} 
 
+%\begin{frame}{Basic Tools} 
+%\begin{block}{}
+%\begin{tabular}{@{}l l@{}}
+%\textbf{rustc}        & The compiler \\
+%\textbf{Cargo}        & Downloads dependencies, compiles packages, 
+%\\ & uploads packages, and makes distributables\\
+%\textbf{crates.io}    & Package registry \\
+%\textbf{rustup}       & Installs toolchain and manages compiler versions \\
+%\end{tabular}
+%\end{block}
+%\end{frame}
 
 \begin{frame}{Basic Tools} 
 \begin{block}{}
+\pause 
 \begin{tabular}{@{}l l@{}}
-\textbf{rustc}        & The compiler \\
-\textbf{Cargo}        & Downloads dependencies, compiles packages, 
-\\ & uploads packages, and makes distributables\\
-\textbf{crates.io}    & Package registry \\
+\textbf{rustc}        & The compiler \\ \pause
+\textbf{Cargo}        & Downloads dependencies, compiles packages, \\ 
+                      & uploads packages, and makes distributables\\ \pause
+\textbf{crates.io}    & Package registry \\ \pause
 \textbf{rustup}       & Installs toolchain and manages compiler versions \\
 \end{tabular}
 \end{block}
 \end{frame}
 
 
-
-
 \begin{frame}{Getting Started: Running Rustup} 
 This installs Rustup, Cargo, the Rust compiler etc. Easy! 
-\begin{block}{Linux / Mac}
+\pause 
+\begin{block}{$\geq$ Debian 13 (trixie), Ubuntu 24.04 (noble)}
+\texttt{sudo apt install rustup}
+\end{block}
+\pause 
+\begin{block}{Other Linux / Mac}
 \texttt{curl --proto `=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh}
 \end{block}
+\pause 
 \begin{block}{Windows}
 Download and run rustup-init.exe (Also requires installing Visual Studio for linker and Windows API)
 \end{block}
@@ -194,31 +240,34 @@ Download and run rustup-init.exe (Also requires installing Visual Studio for lin
 
 \begin{frame}{Example Cargo Commands} 
 \begin{block}{}
+\pause
 \begin{tabular}{@{}l l@{}}
-\texttt{cargo new}     & Create a new Rust project \\
-\texttt{cargo run}     & Build and run \\
-\texttt{cargo build}     & Build without running \\
-\texttt{cargo test}    & Run tests \\
+\texttt{cargo new}     & Create a new Rust project \\ \pause
+\texttt{cargo run}     & Build and run \\ \pause
+\texttt{cargo build}     & Build without running \\ \pause
+\texttt{cargo test}    & Run tests \\ \pause
 \texttt{cargo update}  & Update dependencies\\
 \end{tabular}
 \end{block}
-
-Of course, can use flags 
+ \pause
+Also many useful flags:
 \begin{block}{}
 \texttt{cargo build --release} \hspace{3em} Build optimized version
 \end{block}
 \end{frame}
 
 \begin{frame}{Other Tooling} 
-\begin{block}{Other Tooling}
+\begin{block}{Rust Tools}
+\pause 
+
 \begin{tabular}{@{}l l@{}}
-\textbf{rust-analyzer}     &  language server (e.g. VS Code plugin) \\
+\textbf{rust-analyzer}     &  language server (e.g. VS Code plugin) \\ \pause
 \textbf{clippy}     &  Linter (correctness, suspicious, style, \\
-					&			complexity, performance) \\
-\textbf{Rustfmt}    & auto-format code \\
-\textbf{MIRI}    	& Analyze unsafe code \\
+					&			complexity, performance) \\ \pause
+\textbf{Rustfmt}    & auto-format code \\ \pause
+\textbf{MIRI}    	& Analyze unsafe code \\ \pause
 \textbf{rustdoc}  & Autogenerate documentation (HTML, CSS, \\
-					&			and JavaScript)\\
+					&			and JavaScript)\\ \pause
 \textbf{cargo publish} & upload package to crates.io \\
 \end{tabular}
 \end{block}
@@ -227,13 +276,15 @@ Of course, can use flags
 
 
 \begin{frame}{Compilation Times} 
-Common criticism of Rust is compilation times. 
+\pause 
+Common criticism of Rust is compilation times. \pause
 
-Much of this criticism is older; lots of improvement made
+Much of this criticism is older; lots of improvement made \pause
 
-Usual causes: Monomorphization, Re-compilation, Detailed compiler error messages
+Usual causes: Monomorphization, Re-compilation, Detailed compiler error messages \pause
 
 What can you do to speed things up?\\ compilation flags: incremental, opt-level
+\pause
 
 Still improving
 
@@ -242,12 +293,12 @@ Still improving
 
 \begin{frame}{Compiler Development} 
 \begin{itemize} [label=$\bullet$] 
-\item
+\item<2-> 
 Rust has a very strict stability policy and releases every six weeks. (Run
 \texttt{rustup update} to update)
-\item
+\item<3-> 
 Many features only available on \emph{nightly} toolchain
-\item 
+\item<4-> 
 Each major decision in Rust starts as Request for Comments (RFC).
 \end{itemize} 
 \end{frame} 
@@ -304,14 +355,14 @@ Rust and Cargo logos are owned by Mozilla and distributed under the terms of the
 
 \begin{frame}{History}
     \begin{itemize}
-        \item[2006] Personal project by \textbf{Graydon Hoare} working at Mozilla
-        \item[2009] Officially sponsored by Mozilla
-        \item[2013] Hoare steps down, Rust Core Team formed
-        \item[2014] Request for Comments (RFC) process introduced
-        \item[2015] Rust 1.0 released
-        \item[2016] Rust Mid-Level Intermediate Language (MIR) introduced
-        \item[2022] Supported in Linux Kernel
-        \item[2024] First Linux (network) drivers written in Rust accepted
+        \item[2006]<2-> Personal project by \textbf{Graydon Hoare} working at Mozilla
+        \item[2009]<3-> Officially sponsored by Mozilla
+        \item[2013]<4-> Hoare steps down, Rust Core Team formed
+        \item[2014]<5-> Request for Comments (RFC) process introduced
+        \item[2015]<6-> Rust 1.0 released
+        \item[2016]<7-> Rust Mid-Level Intermediate Language (MIR) introduced
+        \item[2022]<8-> Supported in Linux Kernel
+        \item[2024]<9-> First Linux (network) drivers written in Rust accepted
 	\end{itemize}
 \end{frame}
 
